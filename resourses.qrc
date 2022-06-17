@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>bin/cos.png</file>
+    </qresource>
+</RCC>
