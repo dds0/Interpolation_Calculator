@@ -120,9 +120,10 @@ void Widget::on_Import_clicked()
 {
     QString data;
     data = QFileDialog::getOpenFileName(this,"Choose file","test","Text files (*.txt);");
-    std::ifstream file(data.toStdString());
+    std::ifstream file;
+    file.open(data.toStdString());
 
-    while (file.is_open())
+    if (file.is_open())
     {
         std::string strForX, strForY;
 
@@ -140,6 +141,10 @@ void Widget::on_Import_clicked()
         }
         CheckData();
         file.close();
+    }
+    else
+    {
+        QMessageBox::warning(this, "Can't open file", "Make sure there are no Cyrillic letters in the path.");
     }
     plot();
 }
